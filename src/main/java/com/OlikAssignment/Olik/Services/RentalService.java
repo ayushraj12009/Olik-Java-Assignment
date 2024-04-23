@@ -32,7 +32,7 @@ public class RentalService {
                 if (book.isAvailable()) {
                     Rental rental = new Rental();
                     rental.setBook(book);
-                    rental.setBookID(bookId);
+                    //rental.setBookID(bookId);
                     rental.setRenterName(renterName);
                     rental.setRentalDate(rentalDate);
 
@@ -103,7 +103,6 @@ public class RentalService {
         if (diffInDays < 0) {
             return 0;
         }
-
         long overdueDays = diffInDays - 14;
 
         return (int) Math.max(overdueDays, 0);

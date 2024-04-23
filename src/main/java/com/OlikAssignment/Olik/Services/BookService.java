@@ -4,6 +4,7 @@ import com.OlikAssignment.Olik.DataModels.Author;
 import com.OlikAssignment.Olik.DataModels.Book;
 import com.OlikAssignment.Olik.Exception.AuthorNotFoundException;
 import com.OlikAssignment.Olik.Exception.BookNotFoundException;
+import com.OlikAssignment.Olik.Repository.AuthorRepository;
 import com.OlikAssignment.Olik.Repository.BookRepository;
 import com.OlikAssignment.Olik.Repository.RentalRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,9 @@ public class BookService {
 
     @Autowired
     private BookRepository bookRepository;
+
+    @Autowired
+    private AuthorRepository authorRepository;
 
 
     private static final String ISBN_PATTERN = "^(?=(?:\\D*\\d){10}(?:(?:\\D*\\d){3})?$|\\d{13}$)[\\d-]+$";
@@ -38,6 +42,28 @@ public class BookService {
             throw new RuntimeException("Error occurred while creating the book", e);
         }
     }
+
+
+    public Book createBook(Long authorId, String bookName) {
+        // Find author by ID
+        Author author = authorRepository.findById(authorId)
+                .orElseThrow(() -> new RuntimeException("Author not found with ID: " + authorId));
+
+        // Create new book
+        Book book = new Book();
+        book.setTitle(bookName);
+        book.setAuthor(author.getName());
+        book.setAvailable(true); // Assuming the book is available by default
+        // Save the book
+        return bookRepository.save(book);
+    }
+
+
+
+
+
+
+
 
 
     public List<Book> getAllBooks() {

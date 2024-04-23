@@ -25,7 +25,7 @@ public class Rental {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long bookID;
+   // private Long bookID;
     private String renterName;
 
     @JsonFormat(pattern = "yyyy-MM-dd")
@@ -41,8 +41,8 @@ public class Rental {
     @JoinColumn(name = "book_id", referencedColumnName = "id")
     private Book book;
 
-    public Rental(Long bookID, String renterName, Date rentalDate, Date returnDate, int overdueDays, Book book) {
-        this.bookID = bookID;
+    public Rental(String renterName, Date rentalDate, Date returnDate, int overdueDays, Book book) {
+      //  this.bookID = bookID;
         this.renterName = renterName;
         this.rentalDate = rentalDate;
         this.returnDate = returnDate;

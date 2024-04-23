@@ -1,5 +1,6 @@
 package com.OlikAssignment.Olik.DataModels;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -31,8 +32,9 @@ public class Book {
         return available;
     }
 
-//    @ManyToOne
-//    @JoinColumn(name = "author_id")
-//    private Author authorName;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @ManyToOne
+    @JoinColumn(name = "author_id", referencedColumnName = "id")
+    private Author authorName;
 
 }
