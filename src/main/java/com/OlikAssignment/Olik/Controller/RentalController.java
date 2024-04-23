@@ -13,10 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @RestController
 @RequestMapping("/rentals")
@@ -30,33 +27,20 @@ public class RentalController {
     @Autowired
     private BookService bookService;
 
+    @GetMapping("/bookForRent")
+    public  ResponseEntity<List<Book>> availableBookForRent(){
+        List<Book> allBooks = bookRepository.findAll();
+        List<Book> availableBooks = new ArrayList<>();
 
-//    @GetMapping("/author/{authorName}")
-//    public ResponseEntity<List<Book>> getBooksByAuthor(@PathVariable String authorName) {
-//        List<Book> books = bookService.getAllBooksByAuthor(authorName);
-//        return ResponseEntity.ok().body(books);
-//    }
+        for (int i = 0; i < allBooks.size(); i++) {
+            Book book = allBooks.get(i);
+            if (book.isAvailable()) { 
+                availableBooks.add(book); 
+            }
+        }
+        return ResponseEntity.ok(availableBooks);
 
-
-
-//    @PostMapping("/bookOnRent")
-//    public ResponseEntity<Rental> rentBook(@RequestBody RentRequest rentRequest) {
-//        if (rentRequest == null || rentRequest.getBookID() == null || rentRequest.getRenterName() == null) {
-//            return ResponseEntity.badRequest().build();
-//        }
-//
-//        Long bookID = rentRequest.getBookID();
-//        String renterName = rentRequest.getRenterName();
-//        Date rentalDate = rentRequest.getRentalDate();
-//
-//        Rental rentedBook = rentalService.rentBook(bookID, renterName,rentalDate);
-//        if (rentedBook == null) {
-//            return ResponseEntity.notFound().build();
-//        }
-//
-//        return ResponseEntity.ok().body(rentedBook);
-//    }
-
+    }
 
     @PostMapping("/bookOnRent")
     public ResponseEntity<Object> rentBook(@RequestBody RentRequest rentRequest) {
@@ -75,24 +59,6 @@ public class RentalController {
         }
     }
 
-//
-//    @PostMapping("/returnBook")
-//    public ResponseEntity<Object> returnBook(@RequestBody ReturnRequest returnRequest) {
-//        try {
-//            if (returnRequest == null || returnRequest.getRentalId() == null) {
-//                return ResponseEntity.badRequest().body("Invalid request. Please provide rental ID.");
-//            }
-//
-//            Long rentalId = returnRequest.getRentalId();
-//            Date returnDate = returnRequest.getReturnDate();
-//
-//            Rental returnedBook = rentalService.returnBook(rentalId,returnDate);
-//
-//            return ResponseEntity.ok(returnedBook);
-//        } catch (RuntimeException e) {
-//            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
-//        }
-//    }
 
     @PostMapping("/returnBook")
     public ResponseEntity<Object> returnBook(@RequestBody ReturnRequest returnRequest) {

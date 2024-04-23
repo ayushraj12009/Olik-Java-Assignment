@@ -6,13 +6,11 @@ import com.OlikAssignment.Olik.Exception.AuthorNotFoundException;
 import com.OlikAssignment.Olik.Exception.BookNotFoundException;
 import com.OlikAssignment.Olik.Repository.AuthorRepository;
 import com.OlikAssignment.Olik.Repository.BookRepository;
-import com.OlikAssignment.Olik.Repository.RentalRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.regex.Pattern;
 
 @Service
 public class BookService {

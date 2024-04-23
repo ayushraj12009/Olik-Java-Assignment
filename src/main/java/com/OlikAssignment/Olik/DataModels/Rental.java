@@ -6,10 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import java.time.LocalDate;
 import java.util.Date;
 
 @Getter
@@ -25,7 +23,6 @@ public class Rental {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-   // private Long bookID;
     private String renterName;
 
     @JsonFormat(pattern = "yyyy-MM-dd")
@@ -42,7 +39,6 @@ public class Rental {
     private Book book;
 
     public Rental(String renterName, Date rentalDate, Date returnDate, int overdueDays, Book book) {
-      //  this.bookID = bookID;
         this.renterName = renterName;
         this.rentalDate = rentalDate;
         this.returnDate = returnDate;

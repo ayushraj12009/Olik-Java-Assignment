@@ -18,7 +18,7 @@ import java.util.List;
 
 public class Author {
 
-
+    // this is author entity as per the assignment
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -30,9 +30,11 @@ public class Author {
     private String biography;
 
 
+    // mapping with other table (foreign key == primary key)
     @OneToMany(mappedBy = "author")
     private List<Book> books = new ArrayList<>();
 
+    // this is because we don't want return null value in console
     @JsonInclude(JsonInclude.Include.NON_NULL)
     public List<Book> getBooks() {
         return books.isEmpty() ? null : books;

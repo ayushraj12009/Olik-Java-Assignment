@@ -6,11 +6,8 @@ import com.OlikAssignment.Olik.Repository.BookRepository;
 import com.OlikAssignment.Olik.Repository.RentalRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.sql.SQLOutput;
 import java.time.ZoneId;
 import java.util.*;
-
 import java.time.LocalDate;
 import java.util.Date;
 
