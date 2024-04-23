@@ -24,10 +24,12 @@ public class BookService {
 
     private static final String ISBN_PATTERN = "^(?=(?:\\D*\\d){10}(?:(?:\\D*\\d){3})?$|\\d{13}$)[\\d-]+$";
 
+    // Method to validate ISBN
     public boolean isValidISBN(String isbn) {
         return isbn != null && isbn.matches(ISBN_PATTERN);
     }
 
+    // Method to create a book
     public Book createBook(Book book) {
         try {
             if (!isValidISBN(book.getIsbn())) {
@@ -42,6 +44,7 @@ public class BookService {
     }
 
 
+    // Method to create a book with author ID and book name
     public Book createBook(Long authorId, String bookName) {
         // Find author by ID
         Author author = authorRepository.findById(authorId)
@@ -57,18 +60,12 @@ public class BookService {
     }
 
 
-
-
-
-
-
-
-
+    // Method to get all books
     public List<Book> getAllBooks() {
         return bookRepository.findAll();
     }
 
-
+    // Method to get a book by ID
       public Book getBookById(Long id) {
         Optional<Book> bookOptional = bookRepository.findById(id);
         if (bookOptional.isPresent()) {
@@ -79,6 +76,7 @@ public class BookService {
     }
 
 
+    // Method to update a book
     public Book updateBook(Long id, Book bookDetails) throws Exception {
         try {
             Book book = getBookById(id);
@@ -94,6 +92,7 @@ public class BookService {
         }
     }
 
+    // Method to delete a book by ID
     public void deleteBook(Long id) {
         Optional<Book> optionalBook = bookRepository.findById(id);
         if(optionalBook.isPresent()){
