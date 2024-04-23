@@ -18,6 +18,7 @@ import java.util.Date;
 
 public class Rental {
 
+    // this is book entity as per the given assignment
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,15 +26,18 @@ public class Rental {
 
     private String renterName;
 
+    // Field to store the date when the book was rented
     @JsonFormat(pattern = "yyyy-MM-dd")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date rentalDate;
 
+    // Field to store the date when the rented book is expected to be returned
     @JsonFormat(pattern = "yyyy-MM-dd")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date returnDate;
     private int overdueDays;
 
+    // Many-to-one relationship field linking Rental to Book entity
     @ManyToOne
     @JoinColumn(name = "book_id", referencedColumnName = "id")
     private Book book;
