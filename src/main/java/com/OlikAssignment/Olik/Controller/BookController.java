@@ -123,6 +123,20 @@ public class BookController {
 
 
     // Endpoint to delete a book by its ID
+//    @DeleteMapping("/deleteBookById/{id}")
+//    public ResponseEntity<String> deleteBook(@PathVariable Long id) {
+//        try {
+//            // Delete the book
+//            bookService.deleteBook(id);
+//            // Return success response
+//            return ResponseEntity.ok().body("Book with ID " + id + " has been successfully deleted.");
+//        } catch (BookNotFoundException e) {
+//            // Handle book not found exception
+//            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+//                    .body("Book with ID " + id + " not found.");
+//        }
+//    }
+
     @DeleteMapping("/deleteBookById/{id}")
     public ResponseEntity<String> deleteBook(@PathVariable Long id) {
         try {
@@ -136,7 +150,6 @@ public class BookController {
                     .body("Book with ID " + id + " not found.");
         }
     }
-
 
 
 

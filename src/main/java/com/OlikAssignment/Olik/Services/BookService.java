@@ -99,7 +99,7 @@ public class BookService {
             bookRepository.deleteById(id);
         }
         else {
-            throw new AuthorNotFoundException("Book with ID " + id + " not found.");
+            throw new BookNotFoundException("Book with ID " + id + " not found.");
         }
     }
 
