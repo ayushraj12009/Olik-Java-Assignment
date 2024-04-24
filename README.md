@@ -17,8 +17,8 @@
 | ENTITY | Type     |                        
 | :-------- | :------- | :-------------------------------- 
 | `BOOK CRUD OPERRATION`    | `https://p.ip.fi/Of-0` | 
-| `Author Crud Operation`   | `https://p.ip.fi/QkZr` | 
-| `Rental API`        | `https://p.ip.fi/foTG` | 
+| `AUTHOR CRUD OPERRATION`   | `https://p.ip.fi/QkZr` | 
+| `RENTAL API`        | `https://p.ip.fi/foTG` | 
 
 
 
