@@ -4,7 +4,9 @@ import com.OlikAssignment.Olik.DataModels.Book;
 import com.OlikAssignment.Olik.DataModels.Rental;
 import com.OlikAssignment.Olik.Repository.BookRepository;
 import com.OlikAssignment.Olik.Repository.RentalRepository;
+import com.OlikAssignment.Olik.RequestDTO.RentRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import java.time.ZoneId;
 import java.util.*;
@@ -131,7 +133,6 @@ public class RentalService {
         // Ensure that overdue days are non-negative
         return (int) Math.max(overdueDays, 0);
     }
-
 
 
 
