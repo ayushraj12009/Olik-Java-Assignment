@@ -14,7 +14,7 @@
 ### For ease of testing, I have created the endpoint and JSON for all entities. Here is the link to it.
 
 
-| ENTITY | Type     |                        
+| ENTITY | URL     |                        
 | :-------- | :------- | :-------------------------------- 
 | `BOOK CRUD OPERRATION`    | `https://p.ip.fi/Of-0` | 
 | `AUTHOR CRUD OPERRATION`   | `https://p.ip.fi/QkZr` | 
