@@ -26,7 +26,7 @@ public class Author {
 
     private String name;
 
-    private String bookName;
+   // private String bookName;
 
     private String biography;
 

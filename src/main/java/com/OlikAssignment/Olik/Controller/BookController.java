@@ -6,7 +6,7 @@ import com.OlikAssignment.Olik.Exception.AuthorNotFoundException;
 import com.OlikAssignment.Olik.Exception.BookNotFoundException;
 import com.OlikAssignment.Olik.Repository.AuthorRepository;
 import com.OlikAssignment.Olik.Repository.BookRepository;
-import com.OlikAssignment.Olik.RequestDTO.CreateBookRequest;
+//import com.OlikAssignment.Olik.RequestDTO.CreateBookRequest;
 import com.OlikAssignment.Olik.Services.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -47,33 +47,33 @@ public class BookController {
     }
 
     // Endpoint to create a book by providing author ID and book details
-    @PostMapping("/createBookByAuthorId")
-    public ResponseEntity<Object> createBook(@RequestBody CreateBookRequest request) {
-        try {
-            // Find the author by ID
-            Optional<Author> optionalAuthor = authorRepository.findById(request.getAuthor_id());
-            if (!optionalAuthor.isPresent()) {
-                throw new RuntimeException("Invalid author ID. Please check.");
-            }
-            Author author = optionalAuthor.get();
-
-            // Create a new book
-            Book book = new Book();
-            book.setAuthorName(author);
-            book.setTitle(author.getName()); // Set the title to author's name (Change if necessary)
-            book.setIsbn(request.getIsbn());
-            book.setAvailable(request.isAvailable());
-            book.setPublicationYear(request.getPublicationYear());
-
-            // Save the book
-            Book savedBook = bookRepository.save(book);
-            // Return success response with the saved book
-            return ResponseEntity.ok(savedBook);
-        } catch (RuntimeException e) {
-            // Handle runtime exceptions
-            return ResponseEntity.badRequest().body(e.getMessage());
-        }
-    }
+//    @PostMapping("/createBookByAuthorId")
+//    public ResponseEntity<Object> createBook(@RequestBody CreateBookRequest request) {
+//        try {
+//            // Find the author by ID
+//            Optional<Author> optionalAuthor = authorRepository.findById(request.getAuthor_id());
+//            if (!optionalAuthor.isPresent()) {
+//                throw new RuntimeException("Invalid author ID. Please check.");
+//            }
+//            Author author = optionalAuthor.get();
+//
+//            // Create a new book
+//            Book book = new Book();
+//            book.setAuthorName(author);
+//          //  book.setTitle(author.getBookName()); // Set the title to author's name (Change if necessary)
+//            book.setIsbn(request.getIsbn());
+//            book.setAvailable(request.isAvailable());
+//            book.setPublicationYear(request.getPublicationYear());
+//
+//            // Save the book
+//            Book savedBook = bookRepository.save(book);
+//            // Return success response with the saved book
+//            return ResponseEntity.ok(savedBook);
+//        } catch (RuntimeException e) {
+//            // Handle runtime exceptions
+//            return ResponseEntity.badRequest().body(e.getMessage());
+//        }
+//    }
 
 
     // Endpoint to get all books
