@@ -20,5 +20,5 @@
 | `AUTHOR CRUD OPERRATION`   | `https://p.ip.fi/QkZr` | 
 | `RENTAL API`        | `https://p.ip.fi/foTG` | 
 
-
+### I wrote the test case for all endpoints, to run that test case, simply execute the Java test file.
 
